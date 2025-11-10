@@ -51,6 +51,10 @@ out/
 *.dylib
 *.dll
 
+# SvelteKit
+.svelte-kit/
+build/
+
 # Logs
 *.log
 npm-debug.log*

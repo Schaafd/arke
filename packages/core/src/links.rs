@@ -30,8 +30,8 @@ impl LinkExtractor {
     /// Create a new link extractor
     pub fn new() -> Self {
         // Matches [[target]] or [[target|display]]
-        let wikilink_regex = Regex::new(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]")
-            .expect("Invalid wikilink regex");
+        let wikilink_regex =
+            Regex::new(r"\[\[([^\]|]+)(?:\|([^\]]+))?\]\]").expect("Invalid wikilink regex");
 
         Self { wikilink_regex }
     }
@@ -102,7 +102,11 @@ impl LinkExtractor {
     }
 
     /// Build a backlinks map from a links map
-    pub fn build_backlinks_map(&self, links_map: &LinksMap, vault_files: &[PathBuf]) -> BacklinksMap {
+    pub fn build_backlinks_map(
+        &self,
+        links_map: &LinksMap,
+        vault_files: &[PathBuf],
+    ) -> BacklinksMap {
         let mut backlinks: BacklinksMap = HashMap::new();
 
         for (source_path, links) in links_map {
@@ -127,14 +131,15 @@ impl LinkExtractor {
 
     /// Get all backlinks for a specific file
     pub fn get_backlinks(&self, file: &Path, backlinks_map: &BacklinksMap) -> Vec<PathBuf> {
-        backlinks_map
-            .get(file)
-            .cloned()
-            .unwrap_or_default()
+        backlinks_map.get(file).cloned().unwrap_or_default()
     }
 
     /// Find broken links (links that don't resolve to any file)
-    pub fn find_broken_links(&self, links_map: &LinksMap, vault_files: &[PathBuf]) -> HashMap<PathBuf, Vec<String>> {
+    pub fn find_broken_links(
+        &self,
+        links_map: &LinksMap,
+        vault_files: &[PathBuf],
+    ) -> HashMap<PathBuf, Vec<String>> {
         let mut broken = HashMap::new();
 
         for (source_path, links) in links_map {
@@ -227,7 +232,10 @@ mod tests {
 
         let files = vec![
             (PathBuf::from("a.md"), "Link to [[b]]".to_string()),
-            (PathBuf::from("c.md"), "Links to [[b]] and [[a]]".to_string()),
+            (
+                PathBuf::from("c.md"),
+                "Links to [[b]] and [[a]]".to_string(),
+            ),
         ];
 
         let vault_files = vec![
@@ -255,14 +263,12 @@ mod tests {
     fn test_find_broken_links() {
         let extractor = LinkExtractor::new();
 
-        let files = vec![
-            (PathBuf::from("a.md"), "Link to [[exists]] and [[missing]]".to_string()),
-        ];
-
-        let vault_files = vec![
+        let files = vec![(
             PathBuf::from("a.md"),
-            PathBuf::from("exists.md"),
-        ];
+            "Link to [[exists]] and [[missing]]".to_string(),
+        )];
+
+        let vault_files = vec![PathBuf::from("a.md"), PathBuf::from("exists.md")];
 
         let links_map = extractor.build_links_map(&files);
         let broken = extractor.find_broken_links(&links_map, &vault_files);

@@ -43,12 +43,14 @@ arke/
 ## Key Design Principles
 
 ### Local-First Architecture
+
 - All notes stored as plain Markdown files in local vaults
 - No server dependency for core features
 - Full offline functionality
 - Optional sync via OS-level file providers (iCloud, Dropbox)
 
 ### Performance Targets
+
 - Cold start: <1s
 - Keystroke latency: <10ms
 - File switching: <50ms
@@ -56,6 +58,7 @@ arke/
 - Crash-free sessions: ≥99.9%
 
 ### Core Features (P0)
+
 - **Editor:** Low-latency Markdown editing with live preview
 - **Linking:** `[[wikilinks]]` with automatic backlinks
 - **Organization:** Tags, daily notes, outline navigation
@@ -63,6 +66,7 @@ arke/
 - **Command Palette:** Keyboard-first navigation
 
 ### Plugin System
+
 - Permissioned runtime (Web Workers / Tauri sidecar)
 - Manifest-based (`manifest.json` with capabilities)
 - Safe mode for crash recovery
@@ -107,6 +111,7 @@ The project follows a 5-phase plan:
 ### Plugin Architecture
 
 Plugins are isolated in Workers/sidecars with explicit permissions:
+
 - File access (scoped to vault)
 - Network access
 - UI panel creation
@@ -117,16 +122,19 @@ Each plugin has a `manifest.json` declaring capabilities. Permission prompts sho
 ## Important Constraints
 
 ### Security
+
 - Plugin permission model must be strict
 - No arbitrary code execution without user consent
 - E2E encryption for optional sync service
 
 ### Privacy
+
 - Opt-in telemetry only (anonymous, aggregated)
 - No note content captured in analytics
 - Transparent data collection policies
 
 ### Accessibility
+
 - WCAG AA compliance minimum
 - Full keyboard navigation
 - Screen reader support
@@ -135,6 +143,7 @@ Each plugin has a `manifest.json` declaring capabilities. Permission prompts sho
 ## Success Metrics
 
 Track these from day 1:
+
 - Activation rate: ≥70% create note in first 10 minutes
 - Day-30 retention: ≥35%
 - MAU target: 10,000 within 6 months
@@ -143,17 +152,20 @@ Track these from day 1:
 ## When Working on This Codebase
 
 ### Before Implementation Exists
+
 - Reference `/plans/Initial_Development_Plan.md` for task breakdowns
 - Follow the phase sequence (don't skip Phase 0 validation)
 - Set up performance monitoring from the start
 
 ### During Implementation
+
 - Maintain keystroke latency <10ms (critical for UX)
 - Use Web Workers for parse/index/search operations
 - Test with large vaults (10k+ notes) regularly
 - Implement crash recovery and autosave early
 
 ### For New Features
+
 - Check if it's P0, P1, or post-v1 in the PRD
 - Consider plugin system extension vs. core feature
 - Validate against performance targets
@@ -164,6 +176,7 @@ Track these from day 1:
 **Current Phase:** Planning complete, awaiting implementation start
 
 **Next Steps:**
+
 1. Initialize repository structure with pnpm workspace
 2. Set up Rust core library with WASM compilation
 3. Create SvelteKit web app shell

@@ -1,6 +1,7 @@
 # Arke Technology Stack Alignment with PRD
 
 ## 1. Architecture (Local-first, One Core, Thin Shells)
+
 - **Core Engine (Rust)**
   - Handles vault I/O, Markdown parse/link extraction, backlinks, indexing/search, conflict detection, exports, plugin API surface.
   - Compiles to **WASM** for Web PWA; linked natively in desktop/mobile.
@@ -13,6 +14,7 @@
 ---
 
 ## 2. Editor, Markdown, and Callouts
+
 - **Rendering pipeline:**
   - Canonical parse in Rust (**comrak**).
   - Web preview via **unified/remark/rehype** + **KaTeX**.
@@ -26,6 +28,7 @@
 ---
 
 ## 3. File Model, Storage, and Sync
+
 - **Vaults:** Plain `.md` + `/assets/`.
 - **Web:** File System Access API or OPFS fallback.
 - **Desktop:** Tauri native FS.
@@ -36,6 +39,7 @@
 ---
 
 ## 4. Search, Indexing, and Graph
+
 - **Indexing:**
   - Desktop/iOS: Rust **tantivy**.
   - Web: **FlexSearch** (Worker-based).
@@ -46,6 +50,7 @@
 ---
 
 ## 5. Plugin System
+
 - **Format:** `manifest.json` (name, version, capabilities).
 - **Runtime:** Web Workers / Tauri sidecar.
 - **Permissions:** Scoped FS/network access.
@@ -55,6 +60,7 @@
 ---
 
 ## 6. Theming, Accessibility, and Performance
+
 - **Themes:** Tailwind tokens; light/dark/high-contrast.
 - **Accessibility:** Keyboard nav, ARIA, WCAG.
 - **Performance:**
@@ -64,6 +70,7 @@
 ---
 
 ## 7. Analytics / Telemetry
+
 - **Opt-in:** PostHog or Segment.
 - **Events:** Vault open, edit, search, plugin actions, export, crash.
 - **No content captured.**
@@ -71,6 +78,7 @@
 ---
 
 ## 8. Security and Privacy
+
 - No server dependency for core.
 - Plugin permission prompts.
 - Optional E2E encrypted sync.
@@ -78,17 +86,19 @@
 ---
 
 ## 9. Release Plan
-| Phase | Duration | Goals |
-|-------|-----------|-------|
-| 0 | 1 week | Spike (editor, vault I/O, index, tokens). |
-| 1 | 2 weeks | Web MVP (PWA, P0 features). |
-| 2 | 1 week | macOS wrapper + plugin loader. |
-| 3 | 2 weeks | Sync polish, export improvements. |
-| 4 | 2-3 weeks | iOS beta (Capacitor + Swift bridge). |
+
+| Phase | Duration  | Goals                                     |
+| ----- | --------- | ----------------------------------------- |
+| 0     | 1 week    | Spike (editor, vault I/O, index, tokens). |
+| 1     | 2 weeks   | Web MVP (PWA, P0 features).               |
+| 2     | 1 week    | macOS wrapper + plugin loader.            |
+| 3     | 2 weeks   | Sync polish, export improvements.         |
+| 4     | 2-3 weeks | iOS beta (Capacitor + Swift bridge).      |
 
 ---
 
 ## 10. Risks and Mitigations
+
 - **Web search scale:** Partitioned indexes, WASM later.
 - **File watching:** Focus refresh + manual command.
 - **Plugin safety:** Strict perms + Safe Mode.
@@ -97,6 +107,7 @@
 ---
 
 ## 11. Technology Checklist
+
 - **Core:** Rust, comrak, serde, notify, tantivy, wasm-bindgen.
 - **Web UI:** SvelteKit, CodeMirror 6, Tailwind, unified, FlexSearch.
 - **Desktop:** Tauri 2.x.
@@ -108,6 +119,7 @@
 ---
 
 ## 12. Optional Starter Monorepo
+
 - **Packages:**
   - `core/` – Rust engine (WASM + native).
   - `web/` – SvelteKit app.

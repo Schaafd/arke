@@ -39,22 +39,22 @@ arke/
 
 ### Technology Stack Summary
 
-| Component | Technology |
-|-----------|------------|
-| Core Engine | Rust (comrak, tantivy, serde, notify) |
-| Web Compilation | wasm-bindgen, wasm-pack |
-| UI Framework | SvelteKit + TypeScript |
-| Editor | CodeMirror 6 |
-| Styling | Tailwind CSS |
+| Component           | Technology                                |
+| ------------------- | ----------------------------------------- |
+| Core Engine         | Rust (comrak, tantivy, serde, notify)     |
+| Web Compilation     | wasm-bindgen, wasm-pack                   |
+| UI Framework        | SvelteKit + TypeScript                    |
+| Editor              | CodeMirror 6                              |
+| Styling             | Tailwind CSS                              |
 | Markdown Processing | unified, remark, rehype, remark-directive |
-| Search (Web) | FlexSearch (Worker-based) |
-| Search (Native) | tantivy |
-| Desktop Wrapper | Tauri 2.x |
-| Mobile Wrapper | Capacitor + Swift |
-| Package Manager | pnpm |
-| Monorepo Tool | Turborepo |
-| Math Rendering | KaTeX |
-| Graph Visualization | Cytoscape.js (post-v1) |
+| Search (Web)        | FlexSearch (Worker-based)                 |
+| Search (Native)     | tantivy                                   |
+| Desktop Wrapper     | Tauri 2.x                                 |
+| Mobile Wrapper      | Capacitor + Swift                         |
+| Package Manager     | pnpm                                      |
+| Monorepo Tool       | Turborepo                                 |
+| Math Rendering      | KaTeX                                     |
+| Graph Visualization | Cytoscape.js (post-v1)                    |
 
 ---
 
@@ -102,6 +102,7 @@ arke/
 - [ ] Test file switching latency (target: <50ms)
 
 **Deliverables:**
+
 - Working editor with file I/O
 - Functional wikilink parsing and backlinks
 - Search prototype with acceptable performance
@@ -198,6 +199,7 @@ arke/
 - [ ] Offline fallback page
 
 **Deliverables:**
+
 - Functional Web PWA with all P0 features
 - Onboarding flow for new users
 - Basic theming support
@@ -269,6 +271,7 @@ arke/
 - [ ] Batch export (folder → ZIP)
 
 **Deliverables:**
+
 - macOS .app bundle
 - Working plugin system with 3 starter plugins
 - Enhanced export functionality
@@ -335,6 +338,7 @@ arke/
 - [ ] FAQ and troubleshooting
 
 **Deliverables:**
+
 - Reliable file-based sync with conflict resolution
 - Daily notes and templates
 - Polished, accessible UX
@@ -397,6 +401,7 @@ arke/
 - [ ] Gather feedback and iterate
 
 **Deliverables:**
+
 - Functional iOS app on TestFlight
 - Full offline support
 - Mobile-optimized UX

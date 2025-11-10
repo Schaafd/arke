@@ -7,6 +7,10 @@
   <p>A cross-platform, markdown-first personal knowledge management system</p>
   <p class="version">Version: {version}</p>
 
+  <div class="cta">
+    <a href="/editor" class="button-primary">Open Editor</a>
+  </div>
+
   <div class="features">
     <h2>Features</h2>
     <ul>
@@ -21,7 +25,13 @@
 
   <div class="status">
     <h3>Development Status</h3>
-    <p>Phase 0: Setting up project structure...</p>
+    <p>Phase 0: Editor Prototype ✨</p>
+    <ul>
+      <li>✅ CodeMirror 6 integration</li>
+      <li>✅ File System Access API</li>
+      <li>✅ Split view editor + preview</li>
+      <li>✅ File tree navigation</li>
+    </ul>
   </div>
 </div>
 
@@ -30,7 +40,10 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   h1 {
@@ -62,7 +75,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: #4CAF50;
+    color: #4caf50;
   }
 
   .status {
@@ -74,5 +87,35 @@
 
   .status h3 {
     margin-top: 0;
+  }
+
+  .status ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .status li {
+    padding: 0.25rem 0;
+  }
+
+  .cta {
+    margin: 2rem 0;
+  }
+
+  .button-primary {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .button-primary:hover {
+    background: #357abd;
+    text-decoration: none;
   }
 </style>

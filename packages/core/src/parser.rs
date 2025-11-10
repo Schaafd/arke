@@ -83,25 +83,15 @@ impl MarkdownParser {
         for line in markdown.lines() {
             let trimmed = line.trim();
             if let Some(stripped) = trimmed.strip_prefix('#') {
-                let level = stripped
-                    .chars()
-                    .take_while(|c| *c == '#')
-                    .count() as u8 + 1;
+                let level = stripped.chars().take_while(|c| *c == '#').count() as u8 + 1;
 
                 if level <= 6 {
-                    let text = stripped
-                        .trim_start_matches('#')
-                        .trim()
-                        .to_string();
+                    let text = stripped.trim_start_matches('#').trim().to_string();
 
                     let id = format!("heading-{}", id_counter);
                     id_counter += 1;
 
-                    headings.push(Heading {
-                        level,
-                        text,
-                        id,
-                    });
+                    headings.push(Heading { level, text, id });
                 }
             }
         }

@@ -11,6 +11,7 @@ feature/<task-name>
 ```
 
 Examples:
+
 - `feature/editor-prototype`
 - `feature/wasm-compilation`
 - `feature/search-integration`
@@ -19,6 +20,7 @@ Examples:
 ### Workflow Steps
 
 1. **Create Feature Branch**
+
    ```bash
    git checkout -b feature/<task-name>
    ```
@@ -35,6 +37,7 @@ Examples:
    - [ ] Feature is complete and working
 
 4. **Merge to Main**
+
    ```bash
    git checkout main
    git merge feature/<task-name>
@@ -61,6 +64,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Types:**
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation changes
@@ -70,6 +74,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 - `chore:` - Maintenance tasks
 
 **Scopes:**
+
 - `core` - Rust core engine
 - `web` - SvelteKit web app
 - `desktop` - Tauri desktop app
@@ -78,6 +83,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 - `docs` - Documentation
 
 **Examples:**
+
 ```
 feat(web): integrate CodeMirror 6 editor with syntax highlighting
 feat(core): implement WASM compilation pipeline
