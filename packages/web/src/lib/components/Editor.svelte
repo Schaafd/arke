@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { EditorView, basicSetup } from 'codemirror';
-  import { markdown } from '@codemirror/lang-markdown';
+  import { EditorView } from '@codemirror/view';
   import { EditorState } from '@codemirror/state';
+  import { markdown } from '@codemirror/lang-markdown';
+  import { basicSetup } from 'codemirror';
 
   export let content = '';
   export let onChange: ((value: string) => void) | undefined = undefined;
