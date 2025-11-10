@@ -1,0 +1,51 @@
+[package]
+name = "arke-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["Arke Contributors"]
+description = "Core engine for Arke PKM system"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Markdown parsing
+comrak = "0.27"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# File watching
+notify = "6.1"
+
+# WASM bindings
+wasm-bindgen = "0.2"
+
+# Async runtime
+tokio = { version = "1.35", features = ["fs", "sync"], optional = true }
+
+# Search and indexing (native only)
+tantivy = { version = "0.22", optional = true }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Regex for wikilinks
+regex = "1.10"
+
+[dev-dependencies]
+tokio = { version = "1.35", features = ["full", "test-util"] }
+tempfile = "3.8"
+
+[features]
+default = ["native"]
+native = ["tokio", "tantivy"]
+wasm = []
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
